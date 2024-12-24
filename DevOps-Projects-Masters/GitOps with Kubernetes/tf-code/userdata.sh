@@ -15,6 +15,9 @@ sudo systemctl start amazon-ssm-agent
 sudo yum install docker -y
 sudo systemctl enable docker
 sudo systemctl start docker
+sudo usermod -ag docker ec2-user
+sudo chmod 777 /var/run/docker.sock
+
 
 # Wait for Docker to start
 sleep 10

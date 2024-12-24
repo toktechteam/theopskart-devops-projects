@@ -21,6 +21,10 @@ To achieve the setup described, follow the steps below. This guide provides a hi
     - Configuration for alert manager
 
 ---
+## To provision the ec2 instance with the user data script, follow the steps below:
+export AWS_PROFILE=system
+terraform plan
+terraform apply --auto-approve
 
 ## 1. User Data Script for EC2 Setup
 
@@ -47,7 +51,7 @@ chmod +x minikube
 sudo mv minikube /usr/local/bin/
 
 # Start Minikube with Docker driver
-sudo minikube start --driver=docker
+sudo minikube start --driver=docker --force --cpus 4 --memory 10240
 
 # Wait for Minikube to start
 sleep 20

@@ -42,6 +42,11 @@ const itemSchema = new mongoose.Schema({
 
 const Item = mongoose.model('Item', itemSchema);
 
+// Add the root URL route handler here
+app.get('/', (req, res) => {
+  res.send('Welcome to the CRUD Application');
+});
+
 app.get('/items', async (req, res) => {
   const items = await Item.find();
   res.json(items);
@@ -107,6 +112,12 @@ CMD ["node", "app.js"]
 ```
 
 ---
+## Note : 
+Before going to k8s - First Create and Run container and Test the container image 
+
+$ docker build -t app:latest .
+$ docker run -d -p 3000:3000 --name apps app:latest
+$ Open port 3000 in ec2 sg for testing of container. Once testing is done remove the port 3000 from ec2-sg.
 
 ## 2. Kubernetes Deployment and Service Files
 
@@ -117,36 +128,46 @@ CMD ["node", "app.js"]
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: crud-app
+   name: crud-app
 spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: crud-app
-  template:
-    metadata:
-      labels:
-        app: crud-app
-    spec:
-      containers:
-      - name: crud-app
-        image: your-dockerhub-username/crud-app:latest
-        ports:
-        - containerPort: 3000
+   replicas: 2
+   selector:
+      matchLabels:
+         app: crud-app
+   template:
+      metadata:
+         labels:
+            app: crud-app
+      spec:
+         containers:
+            - name: crud-app
+              image: your-dockerhub-username/crud-app:latest
+              ports:
+                 - containerPort: 3000
+              env:
+                 - name: MONGO_URL
+                   value: "mongodb://mongo-service:27017/cruddb"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: crud-app-service
+   name: crud-app-service
 spec:
-  selector:
-    app: crud-app
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 3000
-  type: LoadBalancer
+   selector:
+      app: crud-app
+   ports:
+      - protocol: TCP
+        port: 80
+        targetPort: 3000
+        nodePort: 31014
+   type: NodePort
 ```
+# Note 
+To access application on ec2-ip address 
+kubectl port-forward --address 0.0.0.0 svc/<svc-name> <host-port>:<service-port>
+Or
+nohup kubectl port-forward svc/svc/<svc-name> -n namespace-name <hostport>:<service-port> > port-forward.log 2>&1 &
+
 
 ### MongoDB Deployment
 

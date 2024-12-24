@@ -50,6 +50,10 @@ resource "aws_instance" "my_instance" {
   }
 
   user_data = file("${path.module}/userdata.sh")
+
+  root_block_device {
+    volume_size = 50
+  }
 }
 
 resource "aws_iam_instance_profile" "ssm_instance_profile" {

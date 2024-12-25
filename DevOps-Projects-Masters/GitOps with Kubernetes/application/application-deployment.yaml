@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,9 +15,9 @@ spec:
     spec:
       containers:
         - name: crud-app
-          image: toktechteam/curd-app:v1.0
+          image: toktechteam/curd-app:v1.1
           ports:
             - containerPort: 3000
           env:
             - name: MONGO_URL
-              value: "mongodb://mongo-service:27017/cruddb"
+              value: "mongodb://mongo-service.apps:27017/cruddb"

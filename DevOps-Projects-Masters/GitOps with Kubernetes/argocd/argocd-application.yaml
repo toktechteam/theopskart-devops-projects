@@ -17,3 +17,6 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
+# To run this file first we need to install ArgoCD CRD's and then we can apply this file
+      # kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml

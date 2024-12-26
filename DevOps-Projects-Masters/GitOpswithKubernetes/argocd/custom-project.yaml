@@ -26,5 +26,6 @@ spec:
 # $ argocd proj get <PROJECT_NAME>
 # $ argocd repo add <REPO_URL> --username <USERNAME> --password <PASSWORD> --upsert --insecure
 # $ argocd repo add https://github.com/toktechteam/theopskart-devops-projects.git --upsert --insecure
+# argocd app sync curd-app
 
 

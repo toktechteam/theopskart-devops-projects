@@ -21,7 +21,7 @@ spec:
 # $ kubectl apply -f custom-project.yaml
 # Using CLI
 # $ argocd login <ARGOCD_SERVER> --username <USERNAME> --password <PASSWORD>
-# $ argocd login 52.13.7.29:8080 --username admin --password xGjJ7B0Gk0LwM78l
+# $ argocd login 52.13.7.29:8080 --username admin --password xxxxxxx
 # $ argocd proj list
 # $ argocd proj get <PROJECT_NAME>
 # $ argocd repo add <REPO_URL> --username <USERNAME> --password <PASSWORD> --upsert --insecure

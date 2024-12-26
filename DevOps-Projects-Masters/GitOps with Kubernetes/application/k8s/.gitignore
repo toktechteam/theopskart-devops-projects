@@ -1,0 +1,38 @@
+# Ignore Terraform directories and files
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Ignore SSH key files
+*.pem
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+
+# Ignore compiled files
+*.class
+*.o
+*.so
+
+# Ignore IDE specific files
+.idea/
+.vscode/
+*.iml
+
+# Ignore Python virtual environment
+venv/
+__pycache__/
+
+# Ignore Node.js modules
+node_modules/
+
+# Ignore build directories
+dist/
+build/

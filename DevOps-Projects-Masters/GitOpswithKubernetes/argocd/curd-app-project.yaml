@@ -7,7 +7,7 @@ spec:
   project: curd-app
   source:
     repoURL: 'https://github.com/toktechteam/theopskart-devops-projects.git'
-    path: DevOps-Projects-Masters/GitOps with Kubernetes/application
+    path: DevOps-Projects-Masters/GitOpswithKubernetes/application/k8s
     targetRevision: HEAD
   destination:
     server: 'https://kubernetes.default.svc'

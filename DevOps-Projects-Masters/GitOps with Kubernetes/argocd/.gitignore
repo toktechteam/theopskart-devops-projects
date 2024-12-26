@@ -8,7 +8,7 @@
 
 # Ignore macOS system files
 .DS_Store
-
+package.json
 # Ignore log files
 *.log
 

@@ -1,15 +1,14 @@
----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crud-app
+  name: my-app
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-repo.git'
+    repoURL: 'https://github.com/toktechteam/theopskart-devops-projects.git'
+    path: DevOps-Projects-Masters/GitOps with Kubernetes/application
     targetRevision: HEAD
-    path: k8s
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: default
@@ -18,5 +17,5 @@ spec:
       prune: true
       selfHeal: true
 
-# To run this file first we need to install ArgoCD CRD's and then we can apply this file
-      # kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+## To create the application, run the following command, this will default project:
+## kubectl apply -f argocd-app.yaml

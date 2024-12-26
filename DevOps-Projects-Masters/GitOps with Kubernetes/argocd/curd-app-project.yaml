@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: curd-app
+  namespace: argocd
+spec:
+  project: curd-app
+  source:
+    repoURL: 'https://github.com/toktechteam/theopskart-devops-projects.git'
+    path: DevOps-Projects-Masters/GitOps with Kubernetes/application
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: apps
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: my-custom-project
+  namespace: argocd
+spec:
+  description: My custom project for managing applications
+  sourceRepos:
+    - 'https://github.com/toktechteam/theopskart-devops-projects.git'
+  destinations:
+    - namespace: '*'
+      server: 'https://kubernetes.default.svc'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+
+## Apply the custom project to the ArgoCD server.
+# $ kubectl apply -f custom-project.yaml
+# Using CLI
+# $ argocd login <ARGOCD_SERVER> --username <USERNAME> --password <PASSWORD>
+# $ argocd login 52.13.7.29:8080 --username admin --password xGjJ7B0Gk0LwM78l
+# $ argocd proj list
+# $ argocd proj get <PROJECT_NAME>
+# $ argocd repo add <REPO_URL> --username <USERNAME> --password <PASSWORD> --upsert --insecure
+# $ argocd repo add https://github.com/toktechteam/theopskart-devops-projects.git --upsert --insecure
+
+

@@ -40,14 +40,14 @@ jobs:
       - name: Terraform Plan
         if: ${{ github.event.inputs.action == 'plan' }}
         run: terraform plan
-        working-directory: Devops-Projects-Master/GitOpswithKubernetes/tf-code
+        working-directory: DevOps-Projects-Masters/GitOpswithKubernetes/tf-code
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'apply' }}
         run: terraform apply -auto-approve
-        working-directory: Devops-Projects-Master/GitOpswithKubernetes/tf-code
+        working-directory: DevOps-Projects-Masters/GitOpswithKubernetes/tf-code
 
       - name: Terraform Destroy
         if: ${{ github.event.inputs.action == 'destroy' }}
         run: terraform destroy -auto-approve
-        working-directory: Devops-Projects-Master/GitOpswithKubernetes/tf-code
+        working-directory: DevOps-Projects-Masters/GitOpswithKubernetes/tf-code

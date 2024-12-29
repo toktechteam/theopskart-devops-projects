@@ -35,7 +35,7 @@ jobs:
 
       - name: Initialize Terraform
         run: terraform init
-        working-directory: Devops-Projects-Master/GitOpswithKubernetes/tf-code
+        working-directory: DevOps-Projects-Masters/GitOpswithKubernetes/tf-code
 
       - name: Terraform Plan
         if: ${{ github.event.inputs.action == 'plan' }}

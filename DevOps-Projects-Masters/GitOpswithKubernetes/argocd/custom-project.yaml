@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: my-custom-project
+  name: curd-app
   namespace: argocd
 spec:
   description: My custom project for managing applications

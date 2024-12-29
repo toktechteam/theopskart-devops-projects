@@ -15,7 +15,7 @@ Run the following command to apply the ArgoCD installation file:
 ```bash
 kubectl apply -f argocd-ns.yaml
 
-kubectl apply -f kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.2/manifests/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.13.2/manifests/install.yaml
 ```
 ## Access the ArgoCD Dashboard
 

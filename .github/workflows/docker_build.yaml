@@ -28,4 +28,4 @@ jobs:
         with:
           context: DevOps-Projects-Masters/GitOpswithKubernetes/application/apps
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/curd-app:latest

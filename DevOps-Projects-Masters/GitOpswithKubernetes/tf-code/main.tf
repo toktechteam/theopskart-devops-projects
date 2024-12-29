@@ -1,3 +1,10 @@
+## Variables section
+variable "public_key" {
+  description = "The public key for SSH access"
+  type        = string
+}
+
+# Provider section
 provider "aws" {
   region  = "us-west-2"
   profile = "system"
@@ -6,7 +13,8 @@ provider "aws" {
 # Key pair code
 resource "aws_key_pair" "my_key" {
   key_name   = "mp1_ec2_key"
-  public_key = file("~/.ssh/id_ed25519.pub")
+  # public_key = file("~/.ssh/id_ed25519.pub") # This will be used if running from local machine
+  public_key = var.public_key # This will be used if running from GitHub Actions
 }
 
 resource "local_file" "private_key" {

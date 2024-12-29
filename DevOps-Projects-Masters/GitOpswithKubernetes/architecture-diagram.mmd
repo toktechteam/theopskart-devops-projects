@@ -1,0 +1,24 @@
+flowchart TD
+    subgraph CI/CD Pipeline
+        A1[GitHub Actions] --> |Trigger Terraform| A2[Terraform]
+        A2 --> |Provision EC2| B1[EC2 Instance]
+        A1 --> |Build & Push Docker Image| C1[Docker Container Registry]
+    end
+
+    subgraph EC2 Configuration
+        B1 --> |Userdata Script| B2[Install Docker, Minikube, ArgoCD CLI, AWS SSM Agent]
+        B2 --> |Run Minikube| B3["Minikube (Kubernetes Cluster)"]
+    end
+
+    subgraph ArgoCD GitOps
+        B3 --> |Install ArgoCD| D1[ArgoCD Server]
+        D1 --> |Sync GitHub Repository| E1[GitHub Repository with Kubernetes Manifests]
+        E1 --> |Deploy Applications| B3
+    end
+
+    subgraph Monitoring
+        F1[Prometheus] --> |Monitor Resources| B3
+        F2[Grafana] --> |Visualize Metrics| F1
+    end
+
+    C1 --> |Pull Docker Image| B3

@@ -1,4 +1,4 @@
-name: Terraform Workflow Infra
+name: tf_deploy_infra
 
 on:
   workflow_dispatch:

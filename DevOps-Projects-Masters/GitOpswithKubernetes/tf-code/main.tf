@@ -7,7 +7,7 @@ variable "public_key" {
 # Provider section
 provider "aws" {
   region  = "us-west-2"
-  profile = "system"
+  #profile = "system"
 }
 
 # Key pair code
